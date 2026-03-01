@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>हनुमान चालीसा | Hanuman Chalisa</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --deep-saffron: #E85C00;
+    --gold: #FFB830;
+    --bright-gold: #FFD700;
+    --cream: #FFF8EE;
+    --dark: #1A0A00;
+    --text: #2D1200;
+    --muted: #7A4A20;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #1A0800;
+    color: var(--cream);
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Mandala background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(255,107,0,0.06) 0%, rgba(255,184,48,0.04) 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: breathe 6s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
+  }
+
+  /* Decorative top border */
+  .top-border {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--saffron), var(--bright-gold), var(--saffron), var(--gold), transparent);
+  }
+
+  /* Header */
+  header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+
+  .om-symbol {
+    font-size: 3.5rem;
+    color: var(--gold);
+    display: block;
+    animation: glow 3s ease-in-out infinite;
+    margin-bottom: 10px;
+  }
+
+  /* Hanuman image frame */
+  .hanuman-frame {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto 30px;
+  }
+
+  .hanuman-frame::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background: conic-gradient(var(--bright-gold), var(--saffron), var(--gold), var(--bright-gold), var(--saffron), var(--bright-gold));
+    animation: spin-halo 12s linear infinite;
+    z-index: 0;
+    opacity: 0.7;
+  }
+
+  .hanuman-frame::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: #1A0800;
+    z-index: 1;
+  }
+
+  @keyframes spin-halo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hanuman-img {
+    position: relative;
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 3px solid var(--gold);
+    display: block;
+    box-shadow: 0 0 40px rgba(255,184,48,0.4), 0 0 80px rgba(255,107,0,0.2);
+  }
+
+  .hanuman-img-outer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.4); }
+    50% { text-shadow: 0 0 40px rgba(255,215,0,0.9), 0 0 80px rgba(255,107,0,0.4); }
+  }
+
+  header h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    color: var(--bright-gold);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 30px rgba(255,184,48,0.5);
+    line-height: 1.3;
+  }
+
+  header h2 {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: var(--gold);
+    margin-top: 8px;
+    font-weight: 400;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .divider-line:last-child {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .divider-diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  /* Main content */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* Section card */
+  .section-card {
+    background: linear-gradient(135deg, rgba(255,107,0,0.07), rgba(255,184,48,0.04));
+    border: 1px solid rgba(255,184,48,0.2);
+    border-radius: 4px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .section-card:hover {
+    border-color: rgba(255,184,48,0.45);
+  }
+
+  /* Corner accents */
+  .section-card::before, .section-card::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    opacity: 0.4;
+    font-size: 0.8rem;
+  }
+  .section-card::before { top: 8px; left: 12px; }
+  .section-card::after { bottom: 8px; right: 12px; }
+
+  .section-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.65rem;
+    color: var(--saffron);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,107,0,0.4), transparent);
+  }
+
+  .verse {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    line-height: 2.1;
+    color: var(--cream);
+    margin-bottom: 22px;
+    text-align: center;
+  }
+
+  .verse:last-child { margin-bottom: 0; }
+
+  .verse-num {
+    display: inline-block;
+    background: rgba(255,107,0,0.2);
+    border: 1px solid rgba(255,107,0,0.3);
+    color: var(--gold);
+    font-size: 0.6rem;
+    font-family: 'Cinzel Decorative', serif;
+    padding: 1px 7px;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin-right: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .translation {
+    font-size: 0.82rem;
+    color: rgba(255,220,150,0.65);
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.6;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+  }
+
+  /* Doha styling */
+  .doha .verse {
+    color: var(--gold);
+    font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+  }
+
+  /* Footer */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(255,184,48,0.15);
+  }
+
+  footer p {
+    color: rgba(255,184,48,0.5);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    font-family: 'Cinzel Decorative', serif;
+  }
+
+  /* Lamp flicker for om */
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.8; }
+    94% { opacity: 1; }
+    96% { opacity: 0.7; }
+    97% { opacity: 1; }
+  }
+
+  .flame {
+    display: inline-block;
+    animation: flicker 4s infinite;
+  }
+
+  /* Scroll reveal */
+  .section-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
+  }
+  .section-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="top-border"></div>
+
+<header>
+  <span class="om-symbol">🕉</span>
+
+  <!-- Hanuman Ji Image -->
+  <div class="hanuman-img-outer">
+    <div class="hanuman-frame">
+      <img 
+        class="hanuman-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Hanuman_Chalisa_%28Gita_Press%29.jpg/240px-Hanuman_Chalisa_%28Gita_Press%29.jpg"
+        alt="Hanuman Ji"
+        onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Hanuman_with_Rama_and_Lakshmana.jpg/220px-Hanuman_with_Rama_and_Lakshmana.jpg';"
+      />
+    </div>
+  </div>
+
+  <h1>Hanuman Chalisa</h1>
+  <h2>हनुमान चालीसा</h2>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+  <p style="color:rgba(255,184,48,0.6); font-size:0.85rem; letter-spacing:0.15em; font-family:'Cinzel Decorative',serif;">BY GOSWAMI TULSIDAS</p>
+</header>
+
+<main>
+
+  <!-- Doha 1 -->
+  <div class="section-card doha">
+    <div class="section-label">दोहा — Opening Couplet</div>
+    <div class="verse">
+      श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।<br>
+      बरनउँ रघुबर बिमल जसु, जो दायकु फल चारि॥
+    </div>
+    <div class="translation">With the dust of Sri Guru's lotus feet, I cleanse the mirror of my mind,<br>and narrate the pure glory of Sri Rama — the giver of four fruits of life.</div>
+  </div>
+
+  <!-- Doha 2 -->
+  <div class="section-card doha">
+    <div class="section-label">दोहा — Opening Couplet 2</div>
+    <div class="verse">
+      बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।<br>
+      बल बुधि बिद्या देहु मोहि, हरहु कलेस बिकार॥
+    </div>
+    <div class="translation">Knowing myself to be without intelligence, I remember Pavan Kumar (Hanuman).<br>Grant me strength, wisdom and knowledge, and remove my afflictions and impurities.</div>
+  </div>
+
+  <!-- Chaupais 1-4 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 1–4</div>
+    <div class="verse"><span class="verse-num">1</span>जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुँ लोक उजागर॥</div>
+    <div class="translation">Victory to Hanuman, ocean of wisdom and virtue. Victory to the Lord of monkeys, illuminator of the three worlds.</div>
+    <div class="verse"><span class="verse-num">2</span>राम दूत अतुलित बल धामा। अंजनि पुत्र पवनसुत नामा॥</div>
+    <div class="translation">Messenger of Rama, abode of incomparable strength. Son of Anjani, known as the son of the wind.</div>
+    <div class="verse"><span class="verse-num">3</span>महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥</div>
+    <div class="translation">Great hero, valiant, with a body like lightning. Remover of evil thoughts, companion of good intellect.</div>
+    <div class="verse"><span class="verse-num">4</span>कंचन बरन बिराज सुबेसा। कानन कुंडल कुँचित केसा॥</div>
+    <div class="translation">Golden-hued, adorned in splendid attire. Wearing ear-rings and with curly hair.</div>
+  </div>
+
+  <!-- Chaupais 5-8 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 5–8</div>
+    <div class="verse"><span class="verse-num">5</span>हाथ बज्र औ ध्वजा बिराजै। काँधे मूँज जनेऊ साजै॥</div>
+    <div class="translation">In hands the thunderbolt and flag shine. The sacred thread of munja grass adorns the shoulder.</div>
+    <div class="verse"><span class="verse-num">6</span>संकर सुवन केसरीनंदन। तेज प्रताप महा जग बंदन॥</div>
+    <div class="translation">Incarnation of Shankara, son of Kesari. Of great glory and splendor, worshipped by the whole world.</div>
+    <div class="verse"><span class="verse-num">7</span>बिद्यावान गुनी अति चातुर। राम काज करिबे को आतुर॥</div>
+    <div class="translation">Learned, virtuous and very clever. Eager to do the work of Rama.</div>
+    <div class="verse"><span class="verse-num">8</span>प्रभु चरित्र सुनिबे को रसिया। राम लखन सीता मन बसिया॥</div>
+    <div class="translation">Delighted in listening to the Lord's deeds. Rama, Lakshmana, and Sita reside in your heart.</div>
+  </div>
+
+  <!-- Chaupais 9-12 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 9–12</div>
+    <div class="verse"><span class="verse-num">9</span>सूक्ष्म रूप धरि सियहिं दिखावा। बिकट रूप धरि लंक जरावा॥</div>
+    <div class="translation">Taking a tiny form, you appeared before Sita. Taking a fearsome form, you burned Lanka.</div>
+    <div class="verse"><span class="verse-num">10</span>भीम रूप धरि असुर सँहारे। रामचंद्र के काज सँवारे॥</div>
+    <div class="translation">Taking an awesome form, you slew demons. You accomplished the tasks of Ramachandra.</div>
+    <div class="verse"><span class="verse-num">11</span>लाय सजीवन लखन जियाये। श्रीरघुबीर हरषि उर लाये॥</div>
+    <div class="translation">Bringing the Sanjeevani herb, you revived Lakshmana. Sri Raghuvira joyfully embraced you.</div>
+    <div class="verse"><span class="verse-num">12</span>रघुपति कीन्ही बहुत बड़ाई। तुम मम प्रिय भरतहि सम भाई॥</div>
+    <div class="translation">Raghupati praised you greatly: "You are as dear to me as my brother Bharata."</div>
+  </div>
+
+  <!-- Chaupais 13-16 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 13–16</div>
+    <div class="verse"><span class="verse-num">13</span>सहस बदन तुम्हरो जस गावैं। अस कहि श्रीपति कंठ लगावैं॥</div>
+    <div class="translation">Thousands of mouths sing your glory — saying this, the Lord of Lakshmi embraced you.</div>
+    <div class="verse"><span class="verse-num">14</span>सनकादिक ब्रह्मादि मुनीसा। नारद सारद सहित अहीसा॥</div>
+    <div class="translation">Sages like Sanaka, Brahma and other great sages — Narada, Sarada, and Shesha (Ahisa) too —</div>
+    <div class="verse"><span class="verse-num">15</span>जम कुबेर दिगपाल जहाँ ते। कबि कोबिद कहि सके कहाँ ते॥</div>
+    <div class="translation">Yama, Kubera, the guardians of directions — poets and learned men cannot fully describe your glory.</div>
+    <div class="verse"><span class="verse-num">16</span>तुम उपकार सुग्रीवहिं कीन्हा। राम मिलाय राज पद दीन्हा॥</div>
+    <div class="translation">You did a great favor to Sugriva. Having him meet Rama, you gave him his kingdom.</div>
+  </div>
+
+  <!-- Chaupais 17-20 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 17–20</div>
+    <div class="verse"><span class="verse-num">17</span>तुम्हरो मंत्र बिभीषन माना। लंकेस्वर भए सब जग जाना॥</div>
+    <div class="translation">Vibhishana heeded your counsel, and became Lord of Lanka — the whole world knows this.</div>
+    <div class="verse"><span class="verse-num">18</span>जुग सहस्र जोजन पर भानू। लील्यो ताहि मधुर फल जानू॥</div>
+    <div class="translation">The sun, thousands of yojanas away, you swallowed thinking it a sweet fruit.</div>
+    <div class="verse"><span class="verse-num">19</span>प्रभु मुद्रिका मेलि मुख माहीं। जलधि लाँघि गये अचरज नाहीं॥</div>
+    <div class="translation">Keeping the Lord's ring in your mouth, you leaped the ocean — no wonder!</div>
+    <div class="verse"><span class="verse-num">20</span>दुर्गम काज जगत के जेते। सुगम अनुग्रह तुम्हरे तेते॥</div>
+    <div class="translation">All the difficult tasks of the world become easy by your grace.</div>
+  </div>
+
+  <!-- Chaupais 21-24 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 21–24</div>
+    <div class="verse"><span class="verse-num">21</span>राम दुआरे तुम रखवारे। होत न आज्ञा बिनु पैसारे॥</div>
+    <div class="translation">You are the guardian of Rama's door. None can enter without your permission.</div>
+    <div class="verse"><span class="verse-num">22</span>सब सुख लहै तुम्हारी सरना। तुम रक्षक काहू को डर ना॥</div>
+    <div class="translation">All comforts are obtained in your shelter. With you as protector, there is nothing to fear.</div>
+    <div class="verse"><span class="verse-num">23</span>आपन तेज सम्हारो आपै। तीनों लोक हाँक तें काँपै॥</div>
+    <div class="translation">You alone can control your own brilliance. The three worlds tremble at your roar.</div>
+    <div class="verse"><span class="verse-num">24</span>भूत पिसाच निकट नहिं आवै। महाबीर जब नाम सुनावै॥</div>
+    <div class="translation">Ghosts and evil spirits do not come near when the name of Mahavira is uttered.</div>
+  </div>
+
+  <!-- Chaupais 25-28 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 25–28</div>
+    <div class="verse"><span class="verse-num">25</span>नासै रोग हरै सब पीरा। जपत निरंतर हनुमत बीरा॥</div>
+    <div class="translation">Diseases perish and all pains are removed — by constantly chanting the name of brave Hanuman.</div>
+    <div class="verse"><span class="verse-num">26</span>संकट तें हनुमान छुड़ावै। मन क्रम बचन ध्यान जो लावै॥</div>
+    <div class="translation">Hanuman frees from all troubles one who meditates on him in thought, deed, and word.</div>
+    <div class="verse"><span class="verse-num">27</span>सब पर राम तपस्वी राजा। तिन के काज सकल तुम साजा॥</div>
+    <div class="translation">Rama reigns supreme as an ascetic king. You accomplish all his tasks.</div>
+    <div class="verse"><span class="verse-num">28</span>और मनोरथ जो कोई लावै। सोइ अमित जीवन फल पावै॥</div>
+    <div class="translation">Whoever brings any desire before you receives unlimited fruits of life.</div>
+  </div>
+
+  <!-- Chaupais 29-32 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 29–32</div>
+    <div class="verse"><span class="verse-num">29</span>चारों जुग परताप तुम्हारा। है परसिद्ध जगत उजियारा॥</div>
+    <div class="translation">Your glory is spread across all four ages. Your radiance illuminates the world.</div>
+    <div class="verse"><span class="verse-num">30</span>साधु-संत के तुम रखवारे। असुर निकंदन राम दुलारे॥</div>
+    <div class="translation">You are the guardian of saints and sages. Destroyer of demons, and the beloved of Rama.</div>
+    <div class="verse"><span class="verse-num">31</span>अष्टसिद्धि नौ निधि के दाता। अस बर दीन जानकी माता॥</div>
+    <div class="translation">You are the giver of the eight siddhis and nine treasures — this boon was granted by Mother Janaki.</div>
+    <div class="verse"><span class="verse-num">32</span>राम रसायन तुम्हरे पासा। सदा रहो रघुपति के दासा॥</div>
+    <div class="translation">You hold the elixir of Ram's name. You remain ever the servant of Raghupati.</div>
+  </div>
+
+  <!-- Chaupais 33-36 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 33–36</div>
+    <div class="verse"><span class="verse-num">33</span>तुम्हरे भजन राम को पावै। जनम जनम के दुख बिसरावै॥</div>
+    <div class="translation">By your devotion one attains Rama and forgets sorrows of countless births.</div>
+    <div class="verse"><span class="verse-num">34</span>अंत काल रघुबर पुर जाई। जहाँ जन्म हरिभक्त कहाई॥</div>
+    <div class="translation">At the time of death, one goes to Raghuvira's abode and is born ever as a devotee of Hari.</div>
+    <div class="verse"><span class="verse-num">35</span>और देवता चित्त न धरई। हनुमत सेइ सर्ब सुख करई॥</div>
+    <div class="translation">You need not contemplate any other deity. Serving Hanuman bestows all happiness.</div>
+    <div class="verse"><span class="verse-num">36</span>संकट कटै मिटै सब पीरा। जो सुमिरै हनुमत बलबीरा॥</div>
+    <div class="translation">All troubles cease and all pain vanishes for one who remembers Hanuman, the powerful hero.</div>
+  </div>
+
+  <!-- Chaupais 37-40 -->
+  <div class="section-card">
+    <div class="section-label">चौपाई — Verses 37–40</div>
+    <div class="verse"><span class="verse-num">37</span>जय जय जय हनुमान गोसाईं। कृपा करहु गुरुदेव की नाईं॥</div>
+    <div class="translation">Victory, victory, victory to Lord Hanuman. Bestow your grace as a spiritual master.</div>
+    <div class="verse"><span class="verse-num">38</span>जो सत बार पाठ कर कोई। छूटहि बंदि महा सुख होई॥</div>
+    <div class="translation">Whoever recites this a hundred times is released from bondage and attains great happiness.</div>
+    <div class="verse"><span class="verse-num">39</span>जो यह पढ़ै हनुमान चालीसा। होय सिद्धि साखी गौरीसा॥</div>
+    <div class="translation">Whoever reads this Hanuman Chalisa — Lord Shiva himself is witness — attains perfection.</div>
+    <div class="verse"><span class="verse-num">40</span>तुलसीदास सदा हरि चेरा। कीजै नाथ हृदय मह डेरा॥</div>
+    <div class="translation">Tulsidas, always a servant of Hari, prays: O Lord, make my heart your abode.</div>
+  </div>
+
+  <!-- Closing Doha -->
+  <div class="section-card doha">
+    <div class="section-label">दोहा — Closing Couplet</div>
+    <div class="verse">
+      पवन तनय संकट हरन, मंगल मूरति रूप।<br>
+      राम लखन सीता सहित, हृदय बसहु सुर भूप॥
+    </div>
+    <div class="translation">O Son of the Wind, remover of afflictions, embodiment of auspiciousness —<br>dwell in my heart together with Rama, Lakshmana, and Sita, O King of Gods.</div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="divider" style="max-width:300px; margin: 0 auto 20px;">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+  <p><span class="flame">🪔</span> &nbsp; JAI SHRI RAM &nbsp; <span class="flame">🪔</span></p>
+  <p style="margin-top:10px; font-size:0.65rem; opacity:0.4;">हनुमान चालीसा — गोस्वामी तुलसीदास</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.section-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.05}s`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
